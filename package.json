@@ -1,0 +1,22 @@
+{
+  "name": "my-1st-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "nodemon": "nodemon index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongodb": "^5.8.1",
+    "mongoose": "^7.4.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
