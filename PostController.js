@@ -4,7 +4,7 @@ import PostService from "./PostService.js";
 class PostController {
   async create(req, res) {
     try {
-      const post = await PostService.create(req.body);
+      const post = await PostService.createPost(req.body);
       res.json(post);
     } catch (e) {
       console.log(e);
@@ -13,8 +13,8 @@ class PostController {
 
   async getAll(req, res) {
     try {
-      const posts = await Post.find();
-    res.json(posts);        
+      const posts = await PostService.getAll();
+      res.json(posts);        
     } catch (e) {
       console.log(e);
     }
@@ -28,9 +28,7 @@ class PostController {
               res.status(400).json("WRONG ID")
           }
         
-          const post = await Post.findById(id)
-
-          console.log(post)
+          const post = await PostService.getOnePost(id);
 
           res.json(post)
     } catch (e) {
@@ -46,9 +44,10 @@ class PostController {
         res.status(400).json("WRONG ID")
       }
       
-      const updatedPost = await Post.findByIdAndUpdate(post._id, post, { new: true })
+      const updatedPost = await PostService.updatePost(post);
       
       res.status(200).json(updatedPost)
+      
     } catch (e) {
       console.log(e);
     }
@@ -62,9 +61,10 @@ class PostController {
         res.status(400).json("WRONG ID");
       }
 
-      const deletedPost = await Post.findByIdAndDelete(id)
+      const deletedPost = await PostService.deletePost(id);
 
-      res.status(200).json(deletedPost + 'DELETED')
+      res.status(200).json(deletedPost)
+
     } catch (e) {
       console.log(e);
     }
