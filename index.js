@@ -1,6 +1,8 @@
 import express from "express";
 import mongoose from "mongoose";
 import router from "./router.js";
+import fileUpload from "express-fileupload";
+
 
 console.log("SERVER IS STARTING");
 
@@ -11,6 +13,9 @@ const app = express();
 
 app.use(express.json());
 app.use("/api", router);
+app.use(fileUpload({
+  
+}));
 //app.use('/api', users)
 
 app.get("/", (req, res) => {
